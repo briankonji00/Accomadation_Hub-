@@ -82,8 +82,8 @@ nav a:hover {
 
 /* Button Styles */
 button {
-    position: absolute;
-    top: 50%;
+    position: center;
+    top: 250%;
     transform: translateY(-50%);
     background-color: rgba(255, 255, 255, 0.7);
     border: none;
