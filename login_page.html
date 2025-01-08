@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Email Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items horizontally */
+            height: 100vh; /* Full viewport height */
+            position: relative; /* Position for footer placement */
+        }
+
+        .header {
+            background-color: black; /* Black header background */
+            color: white; /* White text */
+            padding: 20px; /* Padding for header */
+            width: 100%; /* Full width */
+            text-align: center; /* Center text */
+            margin-bottom: 20px; /* Space below header */
+        }
+
+        .header img {
+            max-width: 50px; /* Set logo size */
+            margin-bottom: 10px; /* Space below logo */
+        }
+
+        .login-section {
+            background-color: #008080; /* Teal background for the form */
+            padding: 50px; /* Reduced padding for a shorter form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+            max-width: 300px; /* Max width for the section */
+            width: 100%; /* Full width on small screens */
+            text-align: center; /* Center the text */
+            margin-bottom: 20px; /* Space below the form section */
+            flex: 1; /* Allow section to grow */
+        }
+
+        .login-section h2 {
+            font-size: 20px; /* Font size for the heading */
+            color: white; /* White text */
+            margin-bottom: 10px; /* Space below the heading */
+        }
+
+        .login-section p {
+            color: white; /* White text for paragraph */
+            font-size: 14px; /* Smaller font size for paragraph */
+        }
+
+        .login-section input {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 8px; /* Reduced padding for input fields */
+            margin: 10px 0; /* Space between inputs */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .login-button {
+            background-color: #007bff; /* Button color */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 8px 16px; /* Reduced padding for the button */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .login-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .hub-button {
+            margin-top: 20px; /* Space above the button */
+            padding: 8px 16px; /* Reduced padding for the button */
+            background-color: #28a745; /* Green button color */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .hub-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .footer {
+            background-color: black; /* Black footer background */
+            color: white; /* White text */
+            text-align: center; /* Center text */
+            padding: 10px; /* Padding for footer */
+            position: absolute; /* Positioning footer */
+            bottom: 0; /* Stick to bottom */
+            width: 100%; /* Full width */
+        }
+    </style>
+    <script>
+        function sendConfirmationEmail(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const emailInput = document.getElementById("email");
+            const email = emailInput.value.trim();
+
+            // Simulate sending an email
+            alert(`A confirmation email has been sent to ${email}. Please check your inbox to proceed.`);
+
+            // Here you would normally send the email via your backend service
+            // e.g., using Fetch API to call your server endpoint.
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="System Logo" /> <!-- Replace with your logo file -->
+        <h1>Accommodation Hub</h1> <!-- Header Title -->
+    </div>
+
+    <section class="login-section">
+        <h2>Student Email Confirmation</h2>
+        <p>Please enter your school email to receive a confirmation message.</p>
+        <form onsubmit="sendConfirmationEmail(event)">
+            <input type="email" id="email" placeholder="School Email" required />
+            <button type="submit" class="login-button">Verify Email</button>
+        </form>
+        <button class="hub-button" onclick="window.location.href='accommodation-hub.html'">Go to Accommodation Hub</button>
+    </section>
+
+    <br><br> <!-- Adding space between the form and footer -->
+
+    <div class="footer">
+        © 2024 Accommodation Hub. All rights reserved.
+    </div>
+</body>
+</html>
