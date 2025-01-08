@@ -16,7 +16,7 @@ header {
 }
 
 header img {
-    max-width: 150px; /* Default logo size */
+    max-width: 100px; /* Default logo size */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -59,7 +59,7 @@ nav a:hover {
 /* Carousel Styles */
 .carousel {
     position: relative;
-    max-width: 90%; /* Full width on small screens */
+    max-width: 80%; /* Full width on small screens */
     margin: auto;
     overflow: hidden;
     border-radius: 8px;
@@ -72,7 +72,7 @@ nav a:hover {
 }
 
 .carousel-images img {
-    width: 100%;
+    width: 80%;
     display: none; /* Hide images by default */
 }
 
@@ -139,7 +139,7 @@ button {
 }
 
 .login-button {
-    padding: 8px 16px; /* Smaller button padding */
+    padding: 2px 8px; /* Smaller button padding */
     background-color: #007bff;
     color: white;
     border: none;
