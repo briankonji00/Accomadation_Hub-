@@ -48,7 +48,7 @@ nav a:hover {
     padding: 30px; /* Reduced padding for mobile */
     margin: 20px auto;
     text-align: center;
-    max-width: 90%; /* Full width on small screens */
+    max-width: 100%; /* Full width on small screens */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,7 +59,7 @@ nav a:hover {
 /* Carousel Styles */
 .carousel {
     position: relative;
-    max-width: 80%; /* Full width on small screens */
+    max-width: 100%; /* Full width on small screens */
     margin: auto;
     overflow: hidden;
     border-radius: 8px;
@@ -72,7 +72,7 @@ nav a:hover {
 }
 
 .carousel-images img {
-    width: 80%;
+    width: 100%;
     display: none; /* Hide images by default */
 }
 
@@ -126,14 +126,14 @@ button {
 /* Login Section */
 .login-section {
     background-color: #f0f0f0;
-    padding: 15px; /* Reduced padding */
+    padding: 10px; /* Reduced padding */
     border-radius: 8px;
     display: flex; /* Use Flexbox */
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
     height: auto; /* Adjust height for smaller screens */
-    max-width: 90%; /* Full width on small screens */
+    max-width: 100%; /* Full width on small screens */
     margin: 20px auto; /* Center the section */
     text-align: center; /* Center text */
 }
@@ -188,12 +188,12 @@ footer {
     }
 
     .login-section {
-        max-width: 95%; /* Slightly wider on small screens */
+        max-width: 100%; /* Slightly wider on small screens */
     }
 
     .welcome-message,
     .about-us {
-        max-width: 95%; /* Full width on small screens */
+        max-width: 100%; /* Full width on small screens */
         padding: 20px; /* Reduced padding */
     }
 
