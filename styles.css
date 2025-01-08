@@ -37,55 +37,29 @@ nav a:hover {
 
 /* Welcome Message Styles */
 .welcome-message {
-    background-color: white; /* White background for the message */
-    border-radius: 8px; /* Rounded corners */
-    padding: 40px; /* Spacing inside the message */
-    margin: 20px auto; /* Centered with margin */
-    text-align: center; /* Centered text */
-    max-width: 600px; /* Maximum width for the message */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-}
-
-.welcome-message h2 {
-    font-size: 24px; /* Font size for the heading */
-    color: #008080; /* Dark gray text color */
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-.welcome-message {
     background-color: #008080; /* Teal */
     color: #FFFFFF; /* White text for contrast */
     border-radius: 8px;
-    padding: 40px;
+    padding: 20px; /* Reduced padding for mobile */
     margin: 20px auto;
     text-align: center;
-    max-width: 600px;
+    max-width: 95%; /* Use percentage for max-width */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-message h2 {
-    font-size: 24px;
+    font-size: 20px; /* Smaller font size for mobile */
     color: #FFFFFF; /* White for better readability */
 }
 
+/* Carousel Styles */
 .carousel {
     position: relative;
-    max-width: 600px;
+    max-width: 100%; /* Full width on mobile */
     margin: auto;
     overflow: hidden;
     border-radius: 8px;
-    height: 300px;
-
+    height: auto; /* Adjust height */
 }
 
 .carousel-images {
@@ -102,6 +76,7 @@ footer {
     display: block; /* Show the active image */
 }
 
+/* Button Styles */
 button {
     position: absolute;
     top: 50%;
@@ -121,104 +96,89 @@ button {
     right: 10px;
 }
 
+/* About Us Styles */
 .about-us {
-    background-color: #008080; /* Light background for contrast */
-    padding: 40 px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin: 20px 0; /* Spacing around the section */
-    text-align: center; /* Center the text */
- background-color: #008080; /* Teal */
+    background-color: #008080; /* Teal */
     color: #FFFFFF; /* White text for contrast */
+    padding: 20px; /* Reduced padding for mobile */
     border-radius: 8px;
-    padding: 40px;
-    margin: 20px auto;
-    text-align: center;
-    max-width: 600px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-}
-
-.about-us {
-    background-color:#008080 ; /* A brighter blue for contrast */
-    padding: 40px; /* Padding for spacing */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     margin: 20px auto; /* Center the section */
     text-align: center; /* Center the text */
-    max-width: 800px; /* Maximum width for better readability */
+    max-width: 95%; /* Use percentage for max-width */
 }
 
 .about-us h2 {
-    font-size: 28px; /* Larger font size for the heading */
-    color: #ffffff; /* White color for the heading */
-    margin-bottom: 20px; /* Space below the heading */
+    font-size: 24px; /* Adjusted font size */
+    margin-bottom: 15px; /* Space below the heading */
 }
 
 .about-us h3 {
-    font-size: 20px; /* Slightly larger subheading */
-    color: #ffffff; /* White for better contrast */
-    margin-bottom: 15px; /* Space below the subheading */
+    font-size: 18px; /* Adjusted font size */
+    margin-bottom: 10px; /* Space below the subheading */
 }
 
 .about-us p {
-    font-size: 16px; /* Standard font size for readability */
-    color: #ffffff; /* White text for contrast */
+    font-size: 14px; /* Standard font size for readability */
     line-height: 1.5; /* Improved line spacing */
-}.button-container {
-    background-color: ; /* Light gray background to match */
-    padding: 15px; /* Padding around the section */
-    border-radius: 8px; /* Rounded corners */
-    text-align: center; /* Center the text */
-    margin: 20px auto; /* Center the section and add margin */
-    width: 300px; /* Fixed width for the button section */
 }
 
-.enter-button {
-    background-color: #000; /* Black background */
-    color: #ffffff; /* White text color */
-    padding: 10px 20px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor */
+/* Login Section */
+.login-section {
+    background-color: #f0f0f0;
+    padding: 15px; /* Reduced padding for mobile */
+    border-radius: 8px;
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: auto; /* Adjust height for content */
+    max-width: 95%; /* Use percentage for max-width */
+    margin: 20px auto; /* Center the section */
+    text-align: center; /* Center text */
+}
+
+.login-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Space between the message and button */
     transition: background-color 0.3s; /* Smooth transition */
 }
 
-.enter-button:hover {
-    background-color: #333; /* Darker gray on hover */
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
 
-.login-section {
-        background-color: #f0f0f0;
-        padding: 20px;
-        border-radius: 8px;
-        display: flex; /* Use Flexbox */
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally */
-        justify-content: center; /* Center items vertically */
-        height: 200px; /* Set a height for vertical centering */
-        max-width: 300px;
-        margin: auto;
-        text-align: center; /* Center text */
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    header, .about-us, .welcome-message, .login-section {
+        padding: 15px; /* Adjust padding for mobile */
     }
+
+    .about-us h2, .about-us h3, .welcome-message h2 {
+        font-size: 18px; /* Smaller font sizes for mobile */
+    }
+
+    .about-us p {
+        font-size: 14px; /* Adjusted font size for better readability */
+    }
+
     .login-button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px; /* Space between the message and button */
+        width: 100%; /* Full width on smaller screens */
     }
-    .login-button:hover {
-        background-color: #0056b3;
-    }
-
-.login-button {
-    position: absolute; /* Keep the button positioned absolutely */
-    top: 1000px; /* Increase this value to move the button down */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust to center */
 }
