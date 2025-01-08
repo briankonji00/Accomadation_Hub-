@@ -182,3 +182,36 @@ footer {
         width: 100%; /* Full width on smaller screens */
     }
 }
+
+/* Header Styles */
+header {
+    background-color: #000000; /* Black header */
+    color: #ffffff; /* White text for header */
+    padding: 10px; /* Reduced padding */
+}
+
+/* Logo Size Adjustment */
+header .logo {
+    width: 150px; /* Smaller logo for mobile */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Header Text Adjustment */
+header h1 {
+    font-size: 20px; /* Smaller font size for mobile */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    header {
+        padding: 10px; /* Further reduced padding for mobile */
+    }
+
+    header .logo {
+        width: 120px; /* Even smaller logo for very small screens */
+    }
+
+    header h1 {
+        font-size: 18px; /* Smaller header text */
+    }
+}
