@@ -165,18 +165,18 @@ footer {
 }
 
 /* Responsive Styles */
-@media (max-width: 600px) {
+@media (max-width: 100px) {
     /* Adjust logo size for small screens */
     header img {
         max-width: 100px; /* Smaller logo size */
     }
 
     header {
-        font-size: 14px; /* Smaller header text size */
+        font-size: 10px; /* Smaller header text size */
     }
 
     .welcome-message h2 {
-        font-size: 18px; /* Smaller heading size */
+        font-size: 10px; /* Smaller heading size */
     }
 
     .about-us h2 {
