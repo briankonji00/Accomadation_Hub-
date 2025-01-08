@@ -124,6 +124,7 @@ button {
 }
 
 /* Login Section */
+/* Login Section */
 .login-section {
     background-color: #f0f0f0;
     padding: 20px; /* Padding around the section */
@@ -140,7 +141,7 @@ button {
 
 /* Login Button */
 .login-button {
-    padding: 8px 16px; /* Smaller padding for the button */
+    padding: 10px 20px; /* Standard padding for larger screens */
     background-color: #007bff;
     color: white;
     border: none;
@@ -151,10 +152,10 @@ button {
     width: 80%; /* Adjust width for better positioning */
 }
 
-/* Smaller Button on Mobile */
+/* Media Query for Smaller Screens */
 @media (max-width: 600px) {
     .login-button {
-        padding: 6px 12px; /* Smaller padding for mobile */
+        padding: 8px 16px; /* Smaller padding for the button on mobile */
         width: 90%; /* Wider button on mobile */
         font-size: 14px; /* Smaller font size for mobile */
     }
