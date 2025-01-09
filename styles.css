@@ -93,7 +93,7 @@ button {
     background-color: rgba(255, 255, 255, 0.7);
     border: none;
     cursor: pointer;
-    padding: 8px; /* Smaller padding for buttons */
+    padding: 4px; /* Smaller padding for buttons */
     font-size: 16px; /* Smaller font size */
 }
 
@@ -144,7 +144,7 @@ button {
 }
 
 .login-button {
-    padding: 2px 8px; /* Smaller button padding */
+    padding: 2px 4px; /* Smaller button padding */
     background-color: #007bff;
     color: white;
     border: none;
