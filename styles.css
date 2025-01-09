@@ -203,6 +203,6 @@ footer {
     }
 
     .carousel {
-        max-width: 100%; /* Full width on small screens */
+        max-width: 80%; /* Full width on small screens */
     }
 }
