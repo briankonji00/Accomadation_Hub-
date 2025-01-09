@@ -65,6 +65,11 @@ nav a:hover {
     border-radius: 8px;
     height: auto; /* Adjust height for mobile */
 }
+.carousel {
+    width: 100%; /* Full width on smaller screens */
+    max-width: 600px; /* Adjust to your desired size for smaller screens */
+    margin: auto; /* Center the carousel */
+}
 
 .carousel-images {
     display: flex;
