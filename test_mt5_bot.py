@@ -4,6 +4,7 @@ This script demonstrates how to use the bot and test its functionality
 """
 
 import MetaTrader5 as mt5
+import pandas as pd
 from mt5_trading_bot import MT5TradingBot
 import logging
 
@@ -182,8 +183,6 @@ def main():
     print("\n" + "#"*60)
     print("# MT5 Trading Bot - Test Suite")
     print("#"*60)
-    
-    import pandas as pd  # Import here for test functions
     
     tests = [
         ("Connection Test", test_connection),

@@ -5,8 +5,6 @@ This bot uses 8 different moving averages to generate buy/sell signals
 
 import MetaTrader5 as mt5
 import pandas as pd
-import numpy as np
-from datetime import datetime
 import time
 import logging
 
@@ -28,7 +26,8 @@ class MT5TradingBot:
     MT5 Trading Bot that uses multiple moving averages for trading signals
     """
     
-    def __init__(self, symbol="EURUSD", timeframe=mt5.TIMEFRAME_M5, lot_size=0.1):
+    def __init__(self, symbol="EURUSD", timeframe=mt5.TIMEFRAME_M5, lot_size=0.1, 
+                 stop_loss_points=100, take_profit_points=150):
         """
         Initialize the trading bot
         
@@ -36,13 +35,20 @@ class MT5TradingBot:
             symbol: Trading symbol (default: EURUSD)
             timeframe: Timeframe for analysis (default: M5)
             lot_size: Position size (default: 0.1)
+            stop_loss_points: Stop loss in points (default: 100)
+            take_profit_points: Take profit in points (default: 150)
         """
         self.symbol = symbol
         self.timeframe = timeframe
         self.lot_size = lot_size
+        self.stop_loss_points = stop_loss_points
+        self.take_profit_points = take_profit_points
         
         # 8 different moving average periods
         self.ma_periods = [5, 10, 20, 50, 100, 150, 200, 250]
+        
+        # Magic number to identify bot trades
+        self.magic_number = 234000
         
         # Trading state
         self.current_position = None  # None, 'buy', or 'sell'
@@ -162,6 +168,26 @@ class MT5TradingBot:
         
         return symbol_info
     
+    def _get_filling_mode(self, symbol_info):
+        """
+        Determine the appropriate filling mode for the symbol
+        
+        Args:
+            symbol_info: Symbol information from MT5
+            
+        Returns:
+            Appropriate filling mode constant
+        """
+        # Check which filling modes are supported
+        filling_mode = symbol_info.filling_mode
+        
+        if filling_mode & 1:  # FOK (Fill or Kill) is supported
+            return mt5.ORDER_FILLING_FOK
+        elif filling_mode & 2:  # IOC (Immediate or Cancel) is supported
+            return mt5.ORDER_FILLING_IOC
+        else:  # Return mode is supported
+            return mt5.ORDER_FILLING_RETURN
+    
     def place_buy_order(self):
         """Place a buy order"""
         symbol_info = self.get_symbol_info()
@@ -171,19 +197,22 @@ class MT5TradingBot:
         price = mt5.symbol_info_tick(self.symbol).ask
         point = symbol_info.point
         
+        # Determine the best filling mode
+        filling_type = self._get_filling_mode(symbol_info)
+        
         request = {
             "action": mt5.TRADE_ACTION_DEAL,
             "symbol": self.symbol,
             "volume": self.lot_size,
             "type": mt5.ORDER_TYPE_BUY,
             "price": price,
-            "sl": price - 100 * point,  # Stop loss
-            "tp": price + 150 * point,  # Take profit
+            "sl": price - self.stop_loss_points * point,  # Stop loss
+            "tp": price + self.take_profit_points * point,  # Take profit
             "deviation": 10,
-            "magic": 234000,
+            "magic": self.magic_number,
             "comment": "MT5 Bot Buy",
             "type_time": mt5.ORDER_TIME_GTC,
-            "type_filling": mt5.ORDER_FILLING_IOC,
+            "type_filling": filling_type,
         }
         
         result = mt5.order_send(request)
@@ -205,19 +234,22 @@ class MT5TradingBot:
         price = mt5.symbol_info_tick(self.symbol).bid
         point = symbol_info.point
         
+        # Determine the best filling mode
+        filling_type = self._get_filling_mode(symbol_info)
+        
         request = {
             "action": mt5.TRADE_ACTION_DEAL,
             "symbol": self.symbol,
             "volume": self.lot_size,
             "type": mt5.ORDER_TYPE_SELL,
             "price": price,
-            "sl": price + 100 * point,  # Stop loss
-            "tp": price - 150 * point,  # Take profit
+            "sl": price + self.stop_loss_points * point,  # Stop loss
+            "tp": price - self.take_profit_points * point,  # Take profit
             "deviation": 10,
-            "magic": 234000,
+            "magic": self.magic_number,
             "comment": "MT5 Bot Sell",
             "type_time": mt5.ORDER_TIME_GTC,
-            "type_filling": mt5.ORDER_FILLING_IOC,
+            "type_filling": filling_type,
         }
         
         result = mt5.order_send(request)
@@ -241,6 +273,12 @@ class MT5TradingBot:
         
         for position in positions:
             tick = mt5.symbol_info_tick(self.symbol)
+            symbol_info = self.get_symbol_info()
+            
+            if symbol_info is None:
+                return False
+            
+            filling_type = self._get_filling_mode(symbol_info)
             
             request = {
                 "action": mt5.TRADE_ACTION_DEAL,
@@ -250,10 +288,10 @@ class MT5TradingBot:
                 "position": position.ticket,
                 "price": tick.ask if position.type == mt5.ORDER_TYPE_SELL else tick.bid,
                 "deviation": 10,
-                "magic": 234000,
+                "magic": self.magic_number,
                 "comment": "MT5 Bot Close",
                 "type_time": mt5.ORDER_TIME_GTC,
-                "type_filling": mt5.ORDER_FILLING_IOC,
+                "type_filling": filling_type,
             }
             
             result = mt5.order_send(request)

@@ -30,6 +30,38 @@ def get_user_input(prompt, default=None):
     return input(f"{prompt}: ").strip()
 
 
+def validate_positive_float(value, name, min_val=0.01, max_val=100.0):
+    """Validate that a value is a positive float within range"""
+    try:
+        num = float(value)
+        if num <= 0:
+            print(f"❌ {name} must be positive")
+            return None
+        if num < min_val or num > max_val:
+            print(f"❌ {name} must be between {min_val} and {max_val}")
+            return None
+        return num
+    except ValueError:
+        print(f"❌ Invalid number for {name}")
+        return None
+
+
+def validate_positive_int(value, name, min_val=1, max_val=3600):
+    """Validate that a value is a positive integer within range"""
+    try:
+        num = int(value)
+        if num <= 0:
+            print(f"❌ {name} must be positive")
+            return None
+        if num < min_val or num > max_val:
+            print(f"❌ {name} must be between {min_val} and {max_val}")
+            return None
+        return num
+    except ValueError:
+        print(f"❌ Invalid number for {name}")
+        return None
+
+
 def run_test_mode():
     """Run bot in test mode"""
     print("\n" + "="*60)
@@ -37,8 +69,20 @@ def run_test_mode():
     print("="*60)
     
     symbol = get_user_input("Enter symbol", "EURUSD")
-    lot_size = float(get_user_input("Enter lot size", "0.1"))
-    interval = int(get_user_input("Check interval (seconds)", "60"))
+    
+    # Get and validate lot size
+    while True:
+        lot_input = get_user_input("Enter lot size", "0.1")
+        lot_size = validate_positive_float(lot_input, "Lot size", 0.01, 10.0)
+        if lot_size is not None:
+            break
+    
+    # Get and validate interval
+    while True:
+        interval_input = get_user_input("Check interval (seconds)", "60")
+        interval = validate_positive_int(interval_input, "Interval", 10, 3600)
+        if interval is not None:
+            break
     
     print(f"\nStarting bot with:")
     print(f"  Symbol: {symbol}")
@@ -74,8 +118,20 @@ def run_live_mode():
         return
     
     symbol = get_user_input("Enter symbol", "EURUSD")
-    lot_size = float(get_user_input("Enter lot size", "0.1"))
-    interval = int(get_user_input("Check interval (seconds)", "60"))
+    
+    # Get and validate lot size
+    while True:
+        lot_input = get_user_input("Enter lot size", "0.1")
+        lot_size = validate_positive_float(lot_input, "Lot size", 0.01, 10.0)
+        if lot_size is not None:
+            break
+    
+    # Get and validate interval
+    while True:
+        interval_input = get_user_input("Check interval (seconds)", "60")
+        interval = validate_positive_int(interval_input, "Interval", 10, 3600)
+        if interval is not None:
+            break
     
     print(f"\nStarting LIVE bot with:")
     print(f"  Symbol: {symbol}")

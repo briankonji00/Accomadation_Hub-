@@ -124,4 +124,4 @@ Open source - Educational purposes
 
 ---
 
-© 2024 Accommodation Hub. All rights reserved.
+© 2024-2026 Accommodation Hub. All rights reserved.
